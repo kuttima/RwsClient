@@ -46,3 +46,16 @@
    at Medidata.RWS.NET.Standard.Exceptions.RwsExceptionHandler.Parse(HttpResponseMessage response)
    at Medidata.RWS.NET.Standard.Core.RwsConnection.SendRequestAsync(IRwsRequest request, Nullable`1 timeout)
    at RwsClient.Console.MyClass.SomeMethod() in C:\Users\ssambathkumar\CoreProjects\RwsClient\RwsClient.Console\MyClass.cs:line 28
+2019-03-04 15:48:11.160 -05:00 [FTL] Console crashed
+Medidata.RWS.NET.Standard.Exceptions.RwsException: Internal Error - Web Service currently unavailable. [RWS00006]
+   at RwsClient.Console.MyClass.SomeMethod() in C:\Users\ssambathkumar\CoreProjects\RwsClient\RwsClient.Console\MyClass.cs:line 61
+   at RwsClient.Console.Program.Main(String[] args) in C:\Users\ssambathkumar\CoreProjects\RwsClient\RwsClient.Console\Program.cs:line 31
+2019-03-04 16:09:06.228 -05:00 [INF] Exception info: Medidata.RWS.NET.Standard.Exceptions.RwsException: Internal Error - Web Service currently unavailable. [RWS00006]
+   at Medidata.RWS.NET.Standard.Exceptions.RwsExceptionHandler.Parse(HttpResponseMessage response)
+   at Medidata.RWS.NET.Standard.Core.RwsConnection.SendRequestAsync(IRwsRequest request, Nullable`1 timeout)
+   at RwsClient.Console.MyClass.SomeMethod() in C:\Users\ssambathkumar\CoreProjects\RwsClient\RwsClient.Console\MyClass.cs:line 27
+2019-03-04 16:12:58.104 -05:00 [INF] Exception from MyClass
+Medidata.RWS.NET.Standard.Exceptions.RwsException: Internal Error - Web Service currently unavailable. [RWS00006]
+   at Medidata.RWS.NET.Standard.Exceptions.RwsExceptionHandler.Parse(HttpResponseMessage response)
+   at Medidata.RWS.NET.Standard.Core.RwsConnection.SendRequestAsync(IRwsRequest request, Nullable`1 timeout)
+   at RwsClient.Console.MyClass.SomeMethod() in C:\Users\ssambathkumar\CoreProjects\RwsClient\RwsClient.Console\MyClass.cs:line 27

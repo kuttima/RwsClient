@@ -14,7 +14,6 @@ namespace RwsClient.Console
     public class MyClass
     {
         private readonly ILogger _logger;
-
         public MyClass(ILogger<MyClass> logger)
         {
             _logger = logger;
@@ -35,7 +34,7 @@ namespace RwsClient.Console
                     }
                     //_logger.LogInformation(await response.ResponseObject.Content.ReadAsStringAsync());
                 else
-                   _logger.LogInformation("No Response...");
+                   _logger.LogInformation("No Response from web service...");
 
 
                 /* //Create a connection
@@ -52,14 +51,11 @@ namespace RwsClient.Console
             }
             catch(HttpRequestException ex)
             {
-                //System.Console.Write("Something Went Wrong!: " + ex);
-                _logger.LogInformation("HttpRequestException " + ex);
-                throw ex;
+                _logger.LogInformation(ex, "HttpRequestException from MyClass");
             }
             catch(Exception ex)
             {
-                _logger.LogInformation("Exception info: " + ex);
-                throw ex;
+                _logger.LogInformation(ex, "Exception from MyClass");
             }
         }
     }

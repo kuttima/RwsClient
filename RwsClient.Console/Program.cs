@@ -16,27 +16,25 @@ namespace RwsClient.Console
         public static void Main(string[] args)
         {
             AppDomain.CurrentDomain.UnhandledException += Current_DomainUnHandledException;
-
-            var serviceCollection = new ServiceCollection();
-            ConfigureServices(serviceCollection);
-
-            var serviceProvider = serviceCollection.BuildServiceProvider();
-            var myClass = serviceProvider.GetService<MyClass>();
+            
             //var logger = serviceProvider.GetService<ILogger<Program>>();  
 
             using (var logger = BuildSerilog())
             {
                 try
                 {
+                    var serviceCollection = new ServiceCollection();
+                    ConfigureServices(serviceCollection);
+
+                    var serviceProvider = serviceCollection.BuildServiceProvider();
+                    var myClass = serviceProvider.GetService<MyClass>();
                     myClass.SomeMethod().GetAwaiter().GetResult();
                 }
                 catch(Exception ex)
                 {
                     logger.Fatal(ex, "Console crashed");
                 }
-            }
-            
-
+            } 
             //MainAsync(args).GetAwaiter().GetResult();
 
             System.Console.Write(Environment.NewLine + "Execution complete...");
@@ -69,7 +67,7 @@ namespace RwsClient.Console
             Log.Logger?.Error(e, "Console application crashed");
         }
 
-        private static Logger BuildSerilog()
+        private static Serilog.Core.Logger BuildSerilog()
         {
             var logger = new LoggerConfiguration()
                             .WriteTo.File("consoleapp.log")
