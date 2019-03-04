@@ -1,7 +1,11 @@
 using System;
+using System.IO;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Medidata.RWS.NET.Standard.Core;
 using Medidata.RWS.NET.Standard.Core.Requests;
+using Medidata.RWS.NET.Standard.Core.Requests.Datasets;
+using Medidata.RWS.NET.Standard.Core.Responses;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Console;
 
@@ -20,11 +24,16 @@ namespace RwsClient.Console
         {
             try
             {
-                var connection = new RwsConnection("tri");
-                var response = await connection.SendRequestAsync(new VersionRequest()) as RwsTextResponse;
+                var connection = new RwsConnection("tri", "Sreelatha2", "Medidata1234");
+                var response = await connection.SendRequestAsync(new 
+                StudyDatasetRequest("CDB-Phase1-001", "Dev", dataset_type: "raw", formOid: "AESAEYN")) as RwsResponse;
                 
                 if (response != null)
-                    _logger.LogInformation(await response.ResponseObject.Content.ReadAsStringAsync());
+                    using(StreamWriter writer = File.CreateText("Newfile.txt"))
+                    {
+                        writer.Write(await response.ResponseObject.Content.ReadAsStringAsync());
+                    }
+                    //_logger.LogInformation(await response.ResponseObject.Content.ReadAsStringAsync());
                 else
                    _logger.LogInformation("No Response...");
 
@@ -41,10 +50,16 @@ namespace RwsClient.Console
                     //Write the response XML string to the console
                 Console.Write(await response.ResponseObject.Content.ReadAsStringAsync());  */  
             }
-            catch(Exception ex)
+            catch(HttpRequestException ex)
             {
                 //System.Console.Write("Something Went Wrong!: " + ex);
-                _logger.LogInformation("Hello" + ex);
+                _logger.LogInformation("HttpRequestException " + ex);
+                throw ex;
+            }
+            catch(Exception ex)
+            {
+                _logger.LogInformation("Exception info: " + ex);
+                throw ex;
             }
         }
     }

@@ -1,1 +1,48 @@
 2019-02-28 09:06:37.548 -05:00 [INF] 1.16.0
+2019-02-28 14:56:25.626 -05:00 [INF] No Response...
+2019-02-28 14:59:59.555 -05:00 [INF] No Response...
+2019-02-28 15:01:57.370 -05:00 [INF] No Response...
+2019-02-28 15:06:40.430 -05:00 [INF] No Response...
+2019-02-28 15:42:00.226 -05:00 [INF] No Response...
+2019-03-04 09:40:26.336 -05:00 [INF] HelloMedidata.RWS.NET.Standard.Exceptions.RwsException: Incorrect login and password combination. [RWS00008]
+   at Medidata.RWS.NET.Standard.Exceptions.RwsExceptionHandler.Parse(HttpResponseMessage response)
+   at Medidata.RWS.NET.Standard.Core.RwsConnection.SendRequestAsync(IRwsRequest request, Nullable`1 timeout)
+   at RwsClient.Console.MyClass.SomeMethod() in C:\Users\ssambathkumar\CoreProjects\RwsClient\RwsClient.Console\MyClass.cs:line 27
+2019-03-04 09:43:28.248 -05:00 [INF] HelloMedidata.RWS.NET.Standard.Exceptions.RwsException: Incorrect login and password combination. [RWS00008]
+   at Medidata.RWS.NET.Standard.Exceptions.RwsExceptionHandler.Parse(HttpResponseMessage response)
+   at Medidata.RWS.NET.Standard.Core.RwsConnection.SendRequestAsync(IRwsRequest request, Nullable`1 timeout)
+   at RwsClient.Console.MyClass.SomeMethod() in C:\Users\ssambathkumar\CoreProjects\RwsClient\RwsClient.Console\MyClass.cs:line 27
+2019-03-04 09:45:22.659 -05:00 [INF] HelloMedidata.RWS.NET.Standard.Exceptions.RwsException: Incorrect login and password combination. [RWS00008]
+   at Medidata.RWS.NET.Standard.Exceptions.RwsExceptionHandler.Parse(HttpResponseMessage response)
+   at Medidata.RWS.NET.Standard.Core.RwsConnection.SendRequestAsync(IRwsRequest request, Nullable`1 timeout)
+   at RwsClient.Console.MyClass.SomeMethod() in C:\Users\ssambathkumar\CoreProjects\RwsClient\RwsClient.Console\MyClass.cs:line 27
+2019-03-04 09:47:28.731 -05:00 [INF] HelloMedidata.RWS.NET.Standard.Exceptions.RwsException: Incorrect login and password combination. [RWS00008]
+   at Medidata.RWS.NET.Standard.Exceptions.RwsExceptionHandler.Parse(HttpResponseMessage response)
+   at Medidata.RWS.NET.Standard.Core.RwsConnection.SendRequestAsync(IRwsRequest request, Nullable`1 timeout)
+   at RwsClient.Console.MyClass.SomeMethod() in C:\Users\ssambathkumar\CoreProjects\RwsClient\RwsClient.Console\MyClass.cs:line 27
+2019-03-04 09:52:12.265 -05:00 [INF] HelloMedidata.RWS.NET.Standard.Exceptions.RwsException: Incorrect login and password combination. [RWS00008]
+   at Medidata.RWS.NET.Standard.Exceptions.RwsExceptionHandler.Parse(HttpResponseMessage response)
+   at Medidata.RWS.NET.Standard.Core.RwsConnection.SendRequestAsync(IRwsRequest request, Nullable`1 timeout)
+   at RwsClient.Console.MyClass.SomeMethod() in C:\Users\ssambathkumar\CoreProjects\RwsClient\RwsClient.Console\MyClass.cs:line 27
+2019-03-04 10:06:16.237 -05:00 [INF] HelloMedidata.RWS.NET.Standard.Exceptions.RwsException: Internal Error - Web Service currently unavailable. [RWS00006]
+   at Medidata.RWS.NET.Standard.Exceptions.RwsExceptionHandler.Parse(HttpResponseMessage response)
+   at Medidata.RWS.NET.Standard.Core.RwsConnection.SendRequestAsync(IRwsRequest request, Nullable`1 timeout)
+   at RwsClient.Console.MyClass.SomeMethod() in C:\Users\ssambathkumar\CoreProjects\RwsClient\RwsClient.Console\MyClass.cs:line 27
+2019-03-04 10:21:58.832 -05:00 [INF] Medidata.RWS.NET.Standard.Exceptions.RwsException: Internal Error - Web Service currently unavailable. [RWS00006]
+   at Medidata.RWS.NET.Standard.Exceptions.RwsExceptionHandler.Parse(HttpResponseMessage response)
+   at Medidata.RWS.NET.Standard.Core.RwsConnection.SendRequestAsync(IRwsRequest request, Nullable`1 timeout)
+   at RwsClient.Console.MyClass.SomeMethod() in C:\Users\ssambathkumar\CoreProjects\RwsClient\RwsClient.Console\MyClass.cs:line 27 Header Information: Medidata.RWS.NET.Standard.Exceptions.RwsException: Internal Error - Web Service currently unavailable. [RWS00006]
+   at Medidata.RWS.NET.Standard.Exceptions.RwsExceptionHandler.Parse(HttpResponseMessage response)
+   at Medidata.RWS.NET.Standard.Core.RwsConnection.SendRequestAsync(IRwsRequest request, Nullable`1 timeout)
+   at RwsClient.Console.MyClass.SomeMethod() in C:\Users\ssambathkumar\CoreProjects\RwsClient\RwsClient.Console\MyClass.cs:line 27
+2019-03-04 11:32:53.888 -05:00 [INF] Exception info: 
+2019-03-04 11:34:25.227 -05:00 [INF] Exception info: 
+2019-03-04 11:40:16.803 -05:00 [INF] Exception info: 
+2019-03-04 11:55:15.650 -05:00 [INF] Exception info: 
+2019-03-04 11:57:35.996 -05:00 [INF] Exception info: 
+2019-03-04 11:59:26.532 -05:00 [INF] Exception info: 
+2019-03-04 12:01:40.943 -05:00 [INF] Exception info: Internal Error - Web Service currently unavailable. [RWS00006]
+2019-03-04 12:03:37.398 -05:00 [INF] Exception info: Medidata.RWS.NET.Standard.Exceptions.RwsException: Internal Error - Web Service currently unavailable. [RWS00006]
+   at Medidata.RWS.NET.Standard.Exceptions.RwsExceptionHandler.Parse(HttpResponseMessage response)
+   at Medidata.RWS.NET.Standard.Core.RwsConnection.SendRequestAsync(IRwsRequest request, Nullable`1 timeout)
+   at RwsClient.Console.MyClass.SomeMethod() in C:\Users\ssambathkumar\CoreProjects\RwsClient\RwsClient.Console\MyClass.cs:line 28
