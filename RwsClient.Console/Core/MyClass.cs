@@ -27,9 +27,9 @@ namespace RwsClient.Console.Core
         {
             try
             {
-                var connection = new RwsConnection(Program.Configuration["MedidataHostName"]);
-                //var connection = new RwsConnection(Program.Configuration["MedidataHostName"], 
-                                   // Program.Configuration["UserName"], Program.Configuration["Password"]);
+                //var connection = new RwsConnection(Program.Configuration["MedidataHostName"]);
+                var connection = new RwsConnection(Program.Configuration["MedidataHostName"], 
+                                    Program.Configuration["UserName"], Program.Configuration["MeididataPassword"]);
                 
 
                 

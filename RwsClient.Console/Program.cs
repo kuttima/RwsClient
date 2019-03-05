@@ -6,6 +6,7 @@ using Medidata.RWS.NET.Standard.Core.Requests;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration.UserSecrets;
 using Serilog;
 using Serilog.AspNetCore;
 using Serilog.Sinks.File;
@@ -23,7 +24,9 @@ namespace RwsClient.Console
 
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json");
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddUserSecrets<Helpers.Secret>();
+                
             Configuration = builder.Build();            
             //var logger = serviceProvider.GetService<ILogger<Program>>();  
 
