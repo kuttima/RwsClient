@@ -1,22 +1,30 @@
 ﻿using System;
+using System.IO;
 using System.Threading.Tasks;
 using Medidata.RWS.NET.Standard.Core;
 using Medidata.RWS.NET.Standard.Core.Requests;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Configuration;
 using Serilog;
 using Serilog.AspNetCore;
 using Serilog.Sinks.File;
 using Serilog.Extensions.Logging;
+using RwsClient.Console.Core.Requests;
 
 namespace RwsClient.Console
 {
     public class Program
     {
+        public static IConfigurationRoot Configuration {get; set;}
         public static void Main(string[] args)
         {
             AppDomain.CurrentDomain.UnhandledException += Current_DomainUnHandledException;
-            
+
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json");
+            Configuration = builder.Build();            
             //var logger = serviceProvider.GetService<ILogger<Program>>();  
 
             using (var logger = BuildSerilog())
@@ -27,7 +35,7 @@ namespace RwsClient.Console
                     ConfigureServices(serviceCollection);
 
                     var serviceProvider = serviceCollection.BuildServiceProvider();
-                    var myClass = serviceProvider.GetService<MyClass>();
+                    var myClass = serviceProvider.GetService<Core.MyClass>();
                     myClass.SomeMethod().GetAwaiter().GetResult();
                 }
                 catch(Exception ex)
@@ -38,14 +46,14 @@ namespace RwsClient.Console
             //MainAsync(args).GetAwaiter().GetResult();
 
             System.Console.Write(Environment.NewLine + "Execution complete...");
-            System.Console.ReadKey();
+            //System.Console.ReadKey();
         }
 
         private static void ConfigureServices(IServiceCollection services)
         {
             services.AddLogging(configure => configure.AddSerilog())
                     //.Configure<LoggerFilterOptions>(options => options.MinLevel = LogLevel.Information)
-                    .AddTransient<MyClass>();
+                    .AddTransient<Core.MyClass>();
 
         }
 
@@ -70,7 +78,7 @@ namespace RwsClient.Console
         private static Serilog.Core.Logger BuildSerilog()
         {
             var logger = new LoggerConfiguration()
-                            .WriteTo.File("consoleapp.log")
+                            .WriteTo.File("Log/consoleapp.log")
                             .CreateLogger();
 
             Log.Logger = logger;
@@ -82,7 +90,7 @@ namespace RwsClient.Console
         {
             try
             {
-                var connection = new RwsConnection("tri");
+                var connection = new RwsConnection(Configuration.GetSection("MedidataHostName").Value);
                 var response = await connection.SendRequestAsync(new MyTwoHundreadRequest()) as RwsTextResponse;
                 
                 if (response != null)

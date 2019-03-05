@@ -6,7 +6,7 @@ using Medidata.RWS.NET.Standard.Core;
 using System.Net.Http;
 using Flurl;
 
-namespace RwsClient.Console
+namespace RwsClient.Console.Core.Requests
 {
     public class MyTwoHundreadRequest : RwsGetRequest
     {
