@@ -12,15 +12,18 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Console;
 using Microsoft.Extensions.Configuration;
 using RwsClient.Console.Helpers;
+using Microsoft.Extensions.Options;
 
 namespace RwsClient.Console.Core
 {
     public class MyClass
     {
         private readonly ILogger _logger;
-        public MyClass(ILogger<MyClass> logger)
+        private readonly Helpers.Secret _secrets;
+        public MyClass(ILogger<MyClass> logger, IOptions<Helpers.Secret> secrets)
         {
             _logger = logger;
+            _secrets = secrets.Value ?? throw new ArgumentNullException(nameof(secrets));
         }
 
         public async Task SomeMethod()
@@ -28,14 +31,14 @@ namespace RwsClient.Console.Core
             try
             {
                 //var connection = new RwsConnection(Program.Configuration["MedidataHostName"]);
+                //var response = await connection.SendRequestAsync(new VersionRequest()) as RwsTextResponse;
+
                 var connection = new RwsConnection(Program.Configuration["MedidataHostName"], 
-                                    Program.Configuration["UserName"], Program.Configuration["MeididataPassword"]);
-                
+                                    Program.Configuration["UserName"], _secrets.MedidataPassword);                
 
                 
-                //var response = await connection.SendRequestAsync(new StudyDatasetRequest(Constant.TestStudyName, Constant.EnvDev, dataset_type: Constant.DataTypeRaw, formOid: Constant.FormOidAESAEYN)) 
-                //as RwsResponse;
-                var response = await connection.SendRequestAsync(new VersionRequest()) as RwsTextResponse;
+                var response = await connection.SendRequestAsync(new StudyDatasetRequest(Constant.TestStudyName, Constant.EnvDev, dataset_type: Constant.DataTypeRaw, formOid: Constant.FormOidAESAEYN)) 
+                as RwsResponse;
                 
                 if (response?.ResponseObject.StatusCode == HttpStatusCode.OK)
                     using(StreamWriter writer = File.CreateText("Newfile.txt"))

@@ -28,16 +28,15 @@ namespace RwsClient.Console
                 .AddUserSecrets<Helpers.Secret>();
                 
             Configuration = builder.Build();            
-            //var logger = serviceProvider.GetService<ILogger<Program>>();  
-
+            //var logger = serviceProvider.GetService<ILogger<Program>>();
             using (var logger = BuildSerilog())
             {
                 try
                 {
                     var serviceCollection = new ServiceCollection();
                     ConfigureServices(serviceCollection);
-
                     var serviceProvider = serviceCollection.BuildServiceProvider();
+
                     var myClass = serviceProvider.GetService<Core.MyClass>();
                     myClass.SomeMethod().GetAwaiter().GetResult();
                 }
@@ -54,8 +53,10 @@ namespace RwsClient.Console
 
         private static void ConfigureServices(IServiceCollection services)
         {
-            services.AddLogging(configure => configure.AddSerilog())
-                    //.Configure<LoggerFilterOptions>(options => options.MinLevel = LogLevel.Information)
+            services.Configure<Helpers.Secret>(Configuration.GetSection(nameof(Helpers.Secret)))
+                    .AddOptions()
+                    .AddLogging(configure => configure.AddSerilog())
+                    .Configure<LoggerFilterOptions>(options => options.MinLevel = LogLevel.Information)
                     .AddTransient<Core.MyClass>();
 
         }
