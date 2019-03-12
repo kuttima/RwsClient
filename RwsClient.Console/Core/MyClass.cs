@@ -3,6 +3,9 @@ using System.IO;
 using System.Text;
 using System.Net;
 using System.Net.Http;
+using System.Xml;
+using System.Xml.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Medidata.RWS.NET.Standard.Core;
 using Medidata.RWS.NET.Standard.Core.Requests;
@@ -37,8 +40,9 @@ namespace RwsClient.Console.Core
                                     Program.Configuration["UserName"], _secrets.MedidataPassword);                
 
                 
-                var response = await connection.SendRequestAsync(new StudyDatasetRequest(Constant.TestStudyName, Constant.EnvDev, dataset_type: Constant.DataTypeRaw, formOid: Constant.FormOidAESAEYN)) 
-                as RwsResponse;
+               // Returns response as a string
+               var response = await connection.SendRequestAsync(new StudyDatasetRequest(Constant.TestStudyName, Constant.EnvDev, dataset_type: Constant.DataTypeRaw, formOid: Constant.FormOidAESAEYN)) 
+                as RwsResponse;                
                 
                 if (response?.ResponseObject.StatusCode == HttpStatusCode.OK)
                     using(StreamWriter writer = File.CreateText("Newfile.txt"))
@@ -47,6 +51,18 @@ namespace RwsClient.Console.Core
                     }
                 else
                    _logger.LogInformation("No Response from web service...");
+
+                //Returns response as XDocument
+                var xmlResponse = await connection.SendRequestAsync(new StudyDatasetRequest(Constant.TestStudyName, Constant.EnvDev, dataset_type: Constant.DataTypeRaw, formOid: Constant.FormOidAESAEYN)) 
+                as XDocument;
+
+                if(response?.ResponseObject.StatusCode == HttpStatusCode.OK)
+                    using(XmlWriter xmlWriter = XmlWriter.Create("xmlFile.xml", null))
+                    {   
+                    xmlResponse.Save(xmlWriter);
+                    }
+                else
+                    _logger.LogInformation("No xml response from web service");
 
 
                 /* //Create a connection
