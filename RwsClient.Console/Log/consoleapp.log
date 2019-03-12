@@ -65,3 +65,12 @@ Medidata.RWS.NET.Standard.Exceptions.RwsException: Internal Error - Web Service 
    at Medidata.RWS.NET.Standard.Core.RwsConnection.SendRequestAsync(IRwsRequest request, Nullable`1 timeout)
    at RwsClient.Console.MyClass.SomeMethod() in C:\Users\ssambathkumar\CoreProjects\RwsClient\RwsClient.Console\MyClass.cs:line 30
 2019-03-05 15:20:02.415 -05:00 [INF] No Response from web service...
+2019-03-12 14:51:48.877 -04:00 [FTL] Console crashed
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at RwsClient.Console.Program.Main(String[] args) in C:\Users\ssambathkumar\CoreProjects\RwsClient\RwsClient.Console\Program.cs:line 44
+2019-03-12 14:53:17.121 -04:00 [FTL] Console crashed
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at RwsClient.Console.Program.Main(String[] args) in C:\Users\ssambathkumar\CoreProjects\RwsClient\RwsClient.Console\Program.cs:line 44
+2019-03-12 14:56:50.095 -04:00 [FTL] Console crashed
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at RwsClient.Console.Program.Main(String[] args) in C:\Users\ssambathkumar\CoreProjects\RwsClient\RwsClient.Console\Program.cs:line 44

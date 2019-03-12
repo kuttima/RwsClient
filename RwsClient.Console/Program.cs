@@ -37,8 +37,11 @@ namespace RwsClient.Console
                     ConfigureServices(serviceCollection);
                     var serviceProvider = serviceCollection.BuildServiceProvider();
 
-                    var myClass = serviceProvider.GetService<Core.MyClass>();
-                    myClass.SomeMethod().GetAwaiter().GetResult();
+                    /* var myClass = serviceProvider.GetService<Core.MyClass>();
+                    myClass.SomeMethod().GetAwaiter().GetResult(); */
+
+                    var tls = serviceProvider.GetService<Core.CheckTLS>();
+                    tls.GetXml().GetAwaiter().GetResult();
                 }
                 catch(Exception ex)
                 {
@@ -57,7 +60,8 @@ namespace RwsClient.Console
                     .AddOptions()
                     .AddLogging(configure => configure.AddSerilog())
                     .Configure<LoggerFilterOptions>(options => options.MinLevel = LogLevel.Information)
-                    .AddTransient<Core.MyClass>();
+                    .AddTransient<Core.MyClass>()
+                    .AddTransient<Core.CheckTLS>();
 
         }
 

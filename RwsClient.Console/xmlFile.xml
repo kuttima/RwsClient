@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CheckTLS test="TestReceiver">
+<eMailAddress>test@CheckTLS.com</eMailAddress>
+<ConfidenceFactor>100</ConfidenceFactor>
+<OutputFormat>XML_Detail</OutputFormat>
+<MXConfidenceFactor>100</MXConfidenceFactor>
+<MXCount>1</MXCount>
+<MXAddrCount>1</MXAddrCount>
+<Answer>100</Answer>
+<Connect>100</Connect>
+<HELO>100</HELO>
+<TLS>100</TLS>
+<Cert>100</Cert>
+<Secure>100</Secure>
+<From>100</From>
+<To>100</To>
+<MX exchange="mail6.CheckTLS.com[159.89.187.50:25]" 
+name="mail6.CheckTLS.com" address="159.89.187.50" 
+port="25" preference="20">
+    <Answer>0.000785</Answer>
+    <Connect>0.145016</Connect>
+    <HELO>0.145838</HELO>
+    <TLS>0.146577</TLS>
+    <Cert>0.373585</Cert>
+    <Secure>0.374993</Secure>
+    <From>0.392895</From>
+    <To>0.43581</To>
+    <MXStep name="To">7</MXStep>
+    <SSL>
+        <SSLVersion>TLSv1_3</SSLVersion>
+        <Cipher>TLS_AES_256_GCM_SHA384</Cipher>
+        <SSLDeprecated>0</SSLDeprecated>
+        <Certs count="3"></Certs>
+    </SSL>
+</MX>
+</CheckTLS>
