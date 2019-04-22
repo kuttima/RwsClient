@@ -19,7 +19,7 @@ namespace RwsClient.Console.Core
 				+ "&EMAIL="             + WebUtility.UrlEncode("test@CheckTLS.com")
 				+ "&LEVEL="             + "XML_DETAIL"
 			);
-			HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+			HttpWebResponse response = (HttpWebResponse)(await request.GetResponseAsync());
 			if (response.StatusCode != HttpStatusCode.OK)
 				System.Console.WriteLine("CheckTLS on test@CheckTLS.com" + Environment.NewLine + response.StatusCode + ": " + response.StatusDescription);
 			StreamReader streamreader = new StreamReader(response.GetResponseStream());
